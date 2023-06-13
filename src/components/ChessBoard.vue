@@ -2,7 +2,12 @@
   <div class="chessboard">
     <button v-for="(square, index) in squares" :key="index" :class="['square', highlightedSquares.includes(square) ? 'highlight' : '',
       (parseInt(index + index / 8) % 2) ? ' black' : ' white']" @click="highlightSquare(square)">
-      {{ square }}
+      <h4 v-if="index % 8 == 0">
+        {{ square.substring(1) }}
+      </h4>
+      <h4 v-if="index >= 56" class = "square bottom">
+        {{ square.substring(0, 1) }}
+      </h4>
     </button>
     <div class="sidebar">
       <h3>Moves:</h3>
@@ -59,9 +64,10 @@ export default {
   max-width: 100%;
   max-height: 100%;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  border-color: black;
+  /* justify-content: center;
+  align-items: center; */
+  border: none;
+  /* border-color: black; */
 }
 
 .square.white {
@@ -90,6 +96,11 @@ export default {
   border-color: black;
   border-width: 1 px;
   border-style: solid;
+}
+
+.square.bottom {
+  justify-content: right;
+  align-items: end;
 }
 
 h3 {
