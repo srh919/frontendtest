@@ -1,11 +1,9 @@
 <template>
   <div class="chessboard">
-    <div v-for="(square, index) in squares" :key="index">
-      <button @click="highlightSquare(square)" :class="['square', highlightedSquares.includes(square) ? 'highlight' : '',
-      (parseInt(index + index / 8) % 2) ? ' black' : ' white']">
-        {{ square }}
-      </button>
-    </div>
+    <button v-for="(square, index) in squares" :key="index" :class="['square', highlightedSquares.includes(square) ? 'highlight' : '',
+      (parseInt(index + index / 8) % 2) ? ' black' : ' white']" @click="highlightSquare(square)">
+      {{ square }}
+    </button>
     <div class="sidebar">
       <h3>Moves:</h3>
       <ol>
