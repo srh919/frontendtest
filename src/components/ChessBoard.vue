@@ -1,7 +1,7 @@
 <template>
   <div class="chessboard">
     <button v-for="(square, index) in squares" :key="index" :class="['square', highlightedSquares.includes(square) ? 'highlight' : '',
-      (parseInt(index + index / 8) % 2) ? ' black' : ' white']" @click="highlightSquare(square)">
+      (parseInt(index + index / 8) % 2) == 0 ? 'white' : 'black']" @click="highlightSquare(square)">
       <h4 v-if="index % 8 == 0">
         {{ square.substring(1) }}
       </h4>
